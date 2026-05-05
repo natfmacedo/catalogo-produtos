@@ -1,0 +1,48 @@
+$body-bg: #FEFEFE;
+$body-secondary-bg: #ABCBD8;
+
+$primary: #420004;
+$secondary: #F2E4E4;
+
+$font-family-base: "Poppins", sans-serif;
+
+@font-face {
+    font-family: "Advercase Bold";
+    src: url('../../../assets/font/Advercase-Bold.ttf');
+}
+
+@import "bootstrap/scss/bootstrap";
+
+.bg-image {
+    background-image: url('../../../assets/img/header-background.jpg');
+    background-attachment: fixed;
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    height: 300px; 
+    width: 100%; 
+}
+
+.font-secondary {
+    font-family: "Advercase Bold", sans-serif;
+}
+
+.border-style {
+    border: 2px dashed rgba(0, 0, 0, 0.25);;
+}
+
+.card-icon {
+    width: 60px;
+    height: 60px;
+}
+
+li.card:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.card-focused {
+  box-shadow: 0 0 0 0.25rem rgba(var(--bs-primary-rgb), 0.75);
+  border-radius: 0.5rem;
+  padding: 0.25rem;
+}
