@@ -5,7 +5,10 @@ function SkeletonCard() {
                 <div className="placeholder-glow">
                     <span className="card-icon rounded-circle placeholder col-6"></span>
                 </div>
-                <article className="card-body">
+                <div className="ratio ratio-4x3 placeholder-glow">
+                    <span className="card-img placeholder mt-3"></span>
+                </div>
+                <article className="card-body mt-3">
                     <h3 className="card-title placeholder-glow">
                         <span className="placeholder col-6"></span>
                     </h3>
