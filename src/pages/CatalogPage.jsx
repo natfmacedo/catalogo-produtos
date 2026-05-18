@@ -142,7 +142,7 @@ function CatalogPage() {
             <h2 className='fw-semibold text-center text-primary'>Cadastro</h2>
             {carregando && (
                 <div className='text-center'>
-                    <div className='spinner-border text-primary' />
+                    <div className='spinner-border text-primary' role='status' aria-label='Carregando'/>
                  </div>
             )}
             {!carregando && (
