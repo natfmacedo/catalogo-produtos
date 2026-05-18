@@ -12,7 +12,6 @@ function CatalogPage() {
         preco: '',
         descricao: ''
     });
-    const [trigger, setTrigger] = useState(0);
     const [carregando, setCarregando] = useState(true);
     const [sucessoCadastro, setSucessoCadastro] = useState(false);
     const [focusAtivo, setFocusAtivo] = useState(false);
@@ -85,7 +84,7 @@ function CatalogPage() {
         }, 3000);
 
         return () => clearTimeout(timer);
-    }, [trigger]);
+    }, []);
     
     // Função que identifica de uma vez só as alterações em todos os inputs
     const handleChange = (e) => {
@@ -135,44 +134,53 @@ function CatalogPage() {
         <header className='container-fluid d-flex flex-column align-items-center justify-content-center bg-image shadow'>
             <div className='p-4 w-50 bg-body text-center'>
             <h1 className='fs-4 fw-medium text-primary'>Catálogo de <span className='d-block font-secondary fs-1'>itens de papelaria</span></h1>
-            <a className='btn btn-outline-primary mt-2' href="#produtos" onClick={() => setTrigger((t) => t + 1)}>Conhecer produtos</a>
+            <a className='btn btn-outline-primary mt-2' href="#produtos">Conhecer produtos</a>
             </div>
         </header>
         <main>
             <section id='cadastro' className='container-fluid p-5'>
             <h2 className='fw-semibold text-center text-primary'>Cadastro</h2>
-            <div className='row justify-content-center mt-4'>
-                <form onSubmit={handleSubmit} className='col-lg-6 p-4 bg-white rounded-4 shadow'>
-                <div className='mb-3'>
-                    <label htmlFor="nome" className='form-label fw-medium'>Nome:</label>
-                    <input type="text" className='form-control bg-white' name="nome" id="nome" placeholder="Insira o nome do produto" value={novoProduto.nome} onChange={handleChange} required/>
-                </div>
-                <div className='mb-3'>
-                    <label htmlFor="linkImagem" className='form-label fw-medium'>Link da imagem:</label>
-                    <input type="url" className='form-control bg-white' name="linkImagem" id="linkImagem" placeholder="Insira o link da imagem do produto" value={novoProduto.linkImagem} onChange={handleChange} required/>
-                </div>
-                <div className='mb-3'>
-                    <label htmlFor="preco" className='form-label fw-medium'>Preço:</label>
-                    <input type="number" className='form-control bg-white' name="preco" id="preco" placeholder="Insira o preço do produto" value={novoProduto.preco} onChange={handleChange} required/>
-                </div>
-                <div className='mb-3'>
-                    <label htmlFor="descricao" className='form-label fw-medium'>Descrição:</label>
-                    <textarea id="descricao" className='form-control bg-white' name="descricao" placeholder="Insira a descrição do produto" value={novoProduto.descricao} onChange={handleChange} required></textarea>
-                </div>
-                <button type="submit" className='btn btn-primary w-100'>Adicionar</button>
-                {sucessoCadastro && (<div className='alert alert-success alert-dismissible mt-3 text-center' role='alert'>
-                Cadastro realizado com sucesso!
-                <button 
-                    type="button"
-                    className='btn btn-link'
-                    onClick={handleVisualizar}>Visualizar</button>
-                <button
-                    type='button'
-                    className='btn btn-link'
-                    onClick={() => setSucessoCadastro(false)}>Fechar</button>
-                </div>)}
-                </form>
-            </div>
+            {carregando && (
+                <div className='text-center'>
+                    <div className='spinner-border text-primary' />
+                 </div>
+            )}
+            {!carregando && (
+                    <div className='row justify-content-center mt-4'>
+                        <form onSubmit={handleSubmit} className='col-lg-6 p-4 bg-white rounded-4 shadow'>
+                            <div className='mb-3'>
+                                <label htmlFor="nome" className='form-label fw-medium'>Nome:</label>
+                                <input type="text" className='form-control bg-white' name="nome" id="nome" placeholder="Insira o nome do produto" value={novoProduto.nome} onChange={handleChange} required/>
+                            </div>
+                            <div className='mb-3'>
+                                <label htmlFor="linkImagem" className='form-label fw-medium'>Link da imagem:</label>
+                                <input type="url" className='form-control bg-white' name="linkImagem" id="linkImagem" placeholder="Insira o link da imagem do produto" value={novoProduto.linkImagem} onChange={handleChange} required/>
+                            </div>
+                            <div className='mb-3'>
+                                <label htmlFor="preco" className='form-label fw-medium'>Preço:</label>
+                                <input type="number" className='form-control bg-white' name="preco" id="preco" placeholder="Insira o preço do produto" value={novoProduto.preco} onChange={handleChange} required/>
+                            </div>
+                            <div className='mb-3'>
+                                <label htmlFor="descricao" className='form-label fw-medium'>Descrição:</label>
+                                <textarea id="descricao" className='form-control bg-white' name="descricao" placeholder="Insira a descrição do produto" value={novoProduto.descricao} onChange={handleChange} required></textarea>
+                            </div>
+                            <button type="submit" className='btn btn-primary w-100'>Adicionar</button>
+                            {sucessoCadastro && (
+                                <div className='alert alert-success alert-dismissible mt-3 text-center' role='alert'>
+                                Cadastro realizado com sucesso!
+                                <button 
+                                    type="button"
+                                    className='btn btn-link'
+                                    onClick={handleVisualizar}>Visualizar</button>
+                                <button
+                                    type='button'
+                                    className='btn btn-link'
+                                    onClick={() => setSucessoCadastro(false)}>Fechar</button>
+                                </div>
+                            )}
+                        </form>
+                    </div>
+            )}
             </section>
             <section  id='produtos' className='container-fluid p-5 bg-secondary'>
             <h2 className='fw-semibold text-center text-primary'>Produtos</h2>
