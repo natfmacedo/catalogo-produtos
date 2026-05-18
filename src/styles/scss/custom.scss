@@ -8,13 +8,13 @@ $font-family-base: "Poppins", sans-serif;
 
 @font-face {
     font-family: "Advercase Bold";
-    src: url('../../../assets/font/Advercase-Bold.ttf');
+    src: url('/assets/font/Advercase-Bold.ttf');
 }
 
 @import "bootstrap/scss/bootstrap";
 
 .bg-image {
-    background-image: url('../../../assets/img/header-background.jpg');
+    background-image: url('/assets/img/header-background.jpg');
     background-attachment: fixed;
     background-size: cover; 
     background-position: center; 
